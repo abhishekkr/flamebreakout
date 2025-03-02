@@ -1,17 +1,19 @@
+
 # flamebreakout
 
 Woz's Breakout redo in Flame, Flutter.
 
+> [Base from Codelab](https://codelabs.developers.google.com/codelabs/flutter-flame-brick-breaker)
 
-## Getting Started
+![Demo Gif](flamebreakout-demo.gif)
 
-This project is a starting point for a Flutter application.
+---
+
+## Flutter
 
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
