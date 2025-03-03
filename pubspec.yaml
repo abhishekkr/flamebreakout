@@ -1,7 +1,7 @@
 name: flamebreakout
 description: "Breakout redo in Flame, Flutter."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: ^3.7.0
