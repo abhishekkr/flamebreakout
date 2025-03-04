@@ -22,6 +22,7 @@ class FlameBreakout extends FlameGame
     ),
   );
 
+  AudioManager adoMgr = AudioManager();
   final ValueNotifier<int> score = ValueNotifier(0);
   final rand = math.Random();
   double get width => size.x;
@@ -49,6 +50,9 @@ class FlameBreakout extends FlameGame
 
     camera.viewfinder.anchor = Anchor.topLeft;
 
+    await add(adoMgr);
+    await adoMgr.initialize();
+
     world.add(PlayArea());
     playState = PlayState.welcome;                              // Add from here...
   }
@@ -61,6 +65,8 @@ class FlameBreakout extends FlameGame
     world.removeAll(world.children.query<Brick>());
     world.removeAll(world.children.query<Player>());
 
+    adoMgr.playBgMusic();
+    adoMgr.play('abk-clank.mp3');
     playState = PlayState.playing;
     score.value = 0;
 

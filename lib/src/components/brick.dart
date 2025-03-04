@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../flamebreakout.dart';
 import '../config.dart';
+import 'audio_manager.dart';
 import 'ball.dart';
 import 'bat.dart';
 
@@ -19,6 +20,8 @@ class Brick extends RectangleComponent
     children: [RectangleHitbox()],
   );
 
+  AudioManager adoMgr = AudioManager();
+
   @override
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
@@ -28,6 +31,9 @@ class Brick extends RectangleComponent
 
     if (game.world.children.query<Brick>().length == 1) {
       game.playState = PlayState.won;
+      adoMgr.play('abk-clank.mp3');
+      adoMgr.play('abk-clank.mp3');
+      adoMgr.play('abk-clank.mp3');
       game.world.removeAll(game.world.children.query<Ball>());
       game.world.removeAll(game.world.children.query<Bat>());
     }

@@ -4,6 +4,7 @@ import 'package:flame/effects.dart';
 import 'package:flutter/material.dart';
 
 import '../flamebreakout.dart';
+import 'audio_manager.dart';
 import 'bat.dart';
 import 'brick.dart';
 import 'play_area.dart';
@@ -23,6 +24,7 @@ class Ball extends CircleComponent
         ..style = PaintingStyle.fill,
         children: [CircleHitbox()]);
 
+  AudioManager adoMgr = AudioManager();
   final Vector2 velocity;
   final double difficultyModifier;
 
@@ -52,10 +54,12 @@ class Ball extends CircleComponent
         ));
       }
     } else if (other is Bat) {
+      adoMgr.play('abk-tock.mp3');
       velocity.y = -velocity.y;
       velocity.x = velocity.x +
           (position.x - other.position.x) / other.size.x * game.width * 0.3;
     } else if (other is Brick) {
+      adoMgr.play('abk-clank.mp3');
       if (position.y < other.position.y - other.size.y / 2) {
         velocity.y = -velocity.y;
       } else if (position.y > other.position.y + other.size.y / 2) {

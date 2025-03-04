@@ -1,3 +1,4 @@
+export 'audio_manager.dart';
 export 'bat.dart';
 export 'ball.dart';
 export 'brick.dart';
