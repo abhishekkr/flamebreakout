@@ -25,6 +25,10 @@ class _GameAppState extends State<GameApp> {
 
   @override
   Widget build(BuildContext context) {
+    const appInstruction = "TAP/SWIPE LEFT/RIGHT OF BAT.";
+    const webInstruction = "USE LEFT & RIGHT ARROW KEYS.";
+    const userInstructions = "TO MOVE:\n${appInstruction}\n${webInstruction}";
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -50,7 +54,7 @@ class _GameAppState extends State<GameApp> {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
-                child: Column(                                  // Modify from here...
+                child: Column(
                   children: [
                     ScoreCard(score: game.score),
                     Expanded(
@@ -64,7 +68,7 @@ class _GameAppState extends State<GameApp> {
                               PlayState.welcome.name: (context, game) =>
                               const OverlayScreen(
                                 title: 'TAP TO PLAY',
-                                subtitle: 'Use arrow keys or swipe',
+                                subtitle: userInstructions,
                               ),
                               PlayState.gameOver.name: (context, game) =>
                               const OverlayScreen(
@@ -78,7 +82,7 @@ class _GameAppState extends State<GameApp> {
                               ),
                             },
                           ),
-                        ),
+                        ), // SizedBox
                       ),
                     ),
                   ],

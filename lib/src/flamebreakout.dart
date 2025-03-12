@@ -13,7 +13,7 @@ import 'config.dart';
 enum PlayState { welcome, playing, gameOver, won }
 
 class FlameBreakout extends FlameGame
-    with HasCollisionDetection, KeyboardEvents, TapDetector {
+    with HasCollisionDetection, KeyboardEvents, TapDetector, HorizontalDragDetector {
   FlameBreakout()
       : super(
     camera: CameraComponent.withFixedResolution(
@@ -107,6 +107,31 @@ class FlameBreakout extends FlameGame
   void onTap() {
     super.onTap();
     startGame();
+  }
+
+  @override
+  bool onTapDown(TapDownInfo info) {
+    var bat = world.children.query<Bat>().first;
+    if (info.eventPosition.widget[0] < bat.position.x) {
+      bat.moveBy(-batStep);
+      world.children.query<Player>().first.moveBy(-batStep);
+    } else {
+      bat.moveBy(batStep);
+      world.children.query<Player>().first.moveBy(batStep);
+    }
+    return true;
+  }
+
+  @override
+  void onHorizontalDragStart(DragStartInfo info) {
+    var bat = world.children.query<Bat>().first;
+    if (info.eventPosition.widget[0] < bat.position.x) {
+      bat.moveBy(-batStep);
+      world.children.query<Player>().first.moveBy(-batStep);
+    } else {
+      bat.moveBy(batStep);
+      world.children.query<Player>().first.moveBy(batStep);
+    }
   }
 
   @override

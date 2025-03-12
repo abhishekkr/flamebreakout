@@ -22,15 +22,15 @@ class OverlayScreen extends StatelessWidget {
             title,
             style: Theme.of(context).textTheme.headlineLarge,
           ).animate().slideY(duration: 750.ms, begin: -3, end: 0),
-          const SizedBox(height: 16),
+          const SizedBox(height: 36),
           Text(
             subtitle,
-            style: Theme.of(context).textTheme.headlineSmall,
+            style: Theme.of(context).textTheme.headlineMedium,
           )
               .animate(onPlay: (controller) => controller.repeat())
-              .fadeIn(duration: 1.seconds)
+              .fadeIn(duration: 100.milliseconds)
               .then()
-              .fadeOut(duration: 1.seconds),
+              .fadeOut(duration: 5.seconds),
         ],
       ),
     );
